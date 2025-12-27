@@ -174,4 +174,34 @@ class AuthViewModel : ViewModel() {
         users.add(User(username = u, password = p))
         return true
     }
+
+    //Login
+    private val _loginUsername = MutableLiveData("")
+    val loginUsername: LiveData<String> = _loginUsername
+
+    private val _loginPassword = MutableLiveData("")
+    val loginPassword: LiveData<String> = _loginPassword
+
+    private val _loginError = MutableLiveData<String?>(null)
+    val loginError: LiveData<String?> = _loginError
+
+    fun setLoginUsername(v: String) { _loginUsername.value = v }
+    fun setLoginPassword(v: String) { _loginPassword.value = v }
+
+    fun login(): Boolean {
+        val u = _loginUsername.value.orEmpty()
+        val p = _loginPassword.value.orEmpty()
+
+        val user = users.find {
+            it.username.equals(u, true) && it.password == p
+        }
+
+        return if (user == null) {
+            _loginError.value = "Credenciales incorrectas"
+            false
+        } else {
+            _loginError.value = null
+            true
+        }
+    }
 }
