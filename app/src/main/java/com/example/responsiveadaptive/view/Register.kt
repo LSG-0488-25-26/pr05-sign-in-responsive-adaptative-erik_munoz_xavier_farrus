@@ -331,6 +331,12 @@ private fun RegisterForm(
                 label = { Text("Tip: usuario debe ser único") }
             )
         }
+
+        TextButton(
+            onClick = { navController.navigate(Routes.Login.route) }
+        ) {
+            Text("Ir al Login")
+        }
     }
 }
 
