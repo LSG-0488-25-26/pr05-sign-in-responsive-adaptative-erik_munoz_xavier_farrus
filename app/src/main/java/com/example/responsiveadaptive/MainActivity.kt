@@ -47,7 +47,11 @@ class MainActivity : ComponentActivity() {
                             RegisterSuccessScreen(navController)
                         }
                         composable(Routes.Login.route) {
-                            LoginScreen(navController)
+                            LoginScreen(
+                                navController = navController,
+                                vm = vm,
+                                windowSize = windowSize
+                            )
                         }
                     }
                 }
