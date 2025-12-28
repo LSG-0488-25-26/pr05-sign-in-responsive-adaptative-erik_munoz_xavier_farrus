@@ -1,6 +1,8 @@
 package com.example.responsiveadaptive.view
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
@@ -41,6 +43,7 @@ private fun LoginCompact(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {
         AppBanner(
@@ -49,74 +52,166 @@ private fun LoginCompact(
             subtitle = "Accede a tu cuenta"
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(24.dp))
         LoginForm(navController, vm)
     }
 }
+
 @Composable
 private fun LoginMedium(
     navController: NavController,
     vm: AuthViewModel,
     windowSize: WindowSizeClass
 ) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(20.dp)
+            .padding(24.dp)
     ) {
-        Column(Modifier.weight(1f)) {
-            AppBanner(
-                widthSizeClass = windowSize.widthSizeClass,
-                title = "Gimnasio FitCampus",
-                subtitle = "Accede a tu cuenta"
-            )
+
+        AppBanner(
+            widthSizeClass = windowSize.widthSizeClass,
+            title = "Gimnasio FitCampus",
+            subtitle = "Accede a tu cuenta"
+        )
+
+        Spacer(Modifier.height(24.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            Card(
+                modifier = Modifier.weight(1f)
+            ) {
+                Column(Modifier.padding(16.dp)) {
+                    Text("Bienvenido/a", style = MaterialTheme.typography.titleMedium)
+                    Spacer(Modifier.height(8.dp))
+                    Text("Loguéate para acceder al servicio.")
+                }
+            }
+
+            Spacer(Modifier.width(16.dp))
+
+            Card(
+                modifier = Modifier.weight(1f)
+            ) {
+                Column(Modifier.padding(16.dp)) {
+                    Text(
+                        "¿Aún no tienes cuenta?",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    OutlinedButton(
+                        onClick = { navController.navigate(Routes.Register.route) },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Crear cuenta")
+                    }
+                }
+            }
         }
 
-        Spacer(Modifier.width(24.dp))
+        Spacer(Modifier.height(32.dp))
 
-        Card(
+        Box(
             modifier = Modifier
-                .weight(1f)
-                .align(Alignment.CenterVertically)
+                .fillMaxWidth()
+                .weight(1f),
+            contentAlignment = Alignment.TopCenter
         ) {
-            Column(Modifier.padding(20.dp)) {
-                LoginForm(navController, vm)
+            Card(
+                modifier = Modifier.widthIn(max = 420.dp),
+                elevation = CardDefaults.cardElevation(6.dp)
+            ) {
+                Column(Modifier.padding(24.dp)) {
+                    LoginForm(navController, vm)
+                }
             }
         }
     }
 }
+
 @Composable
 private fun LoginExpanded(
     navController: NavController,
     vm: AuthViewModel,
     windowSize: WindowSizeClass
 ) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp)
+            .padding(24.dp) // similar al medium
     ) {
-        Column(Modifier.weight(1f)) {
-            AppBanner(
-                widthSizeClass = windowSize.widthSizeClass,
-                title = "Gimnasio FitCampus",
-                subtitle = "Accede a tu cuenta"
-            )
+
+        AppBanner(
+            widthSizeClass = windowSize.widthSizeClass,
+            title = "Gimnasio FitCampus",
+            subtitle = "Accede a tu cuenta"
+        )
+
+        Spacer(Modifier.height(24.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            Card(
+                modifier = Modifier.weight(1f),
+                elevation = CardDefaults.cardElevation(6.dp)
+            ) {
+                Column(Modifier.padding(16.dp)) {
+                    Text("Bienvenido/a", style = MaterialTheme.typography.titleMedium)
+                    Spacer(Modifier.height(8.dp))
+                    Text("Loguéate para acceder al servicio.")
+                }
+            }
+
+            Spacer(Modifier.width(16.dp))
+
+            Card(
+                modifier = Modifier.weight(1f),
+                elevation = CardDefaults.cardElevation(6.dp)
+            ) {
+                Column(Modifier.padding(16.dp)) {
+                    Text(
+                        "¿Aún no tienes cuenta?",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    OutlinedButton(
+                        onClick = { navController.navigate(Routes.Register.route) },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Crear cuenta")
+                    }
+                }
+            }
         }
 
-        Spacer(Modifier.width(32.dp))
+        Spacer(Modifier.height(32.dp))
 
-        Card(
+        Box(
             modifier = Modifier
-                .weight(1f)
-                .align(Alignment.CenterVertically)
+                .fillMaxWidth()
+                .weight(1f),
+            contentAlignment = Alignment.TopCenter
         ) {
-            Column(Modifier.padding(24.dp)) {
-                LoginForm(navController, vm)
+            Card(
+                modifier = Modifier.widthIn(max = 420.dp),
+                elevation = CardDefaults.cardElevation(6.dp)
+            ) {
+                Column(Modifier.padding(24.dp)) {
+                    LoginForm(navController, vm)
+                }
             }
         }
     }
 }
+
+
 @Composable
 private fun LoginForm(
     navController: NavController,
@@ -126,8 +221,14 @@ private fun LoginForm(
     val pass by vm.loginPassword.observeAsState("")
     val error by vm.loginError.observeAsState()
 
-    Text("Login", style = MaterialTheme.typography.headlineSmall)
-    Spacer(Modifier.height(12.dp))
+    Text(
+        text = "Login",
+        style = MaterialTheme.typography.headlineSmall,
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = androidx.compose.ui.text.style.TextAlign.Center
+    )
+
+    Spacer(Modifier.height(16.dp))
 
     OutlinedTextField(
         value = user,
@@ -136,7 +237,7 @@ private fun LoginForm(
         modifier = Modifier.fillMaxWidth()
     )
 
-    Spacer(Modifier.height(8.dp))
+    Spacer(Modifier.height(12.dp))
 
     OutlinedTextField(
         value = pass,
@@ -154,18 +255,12 @@ private fun LoginForm(
         )
     }
 
-    Spacer(Modifier.height(16.dp))
+    Spacer(Modifier.height(24.dp))
 
     Button(
         onClick = { vm.login() },
         modifier = Modifier.fillMaxWidth()
     ) {
         Text("Entrar")
-    }
-
-    TextButton(
-        onClick = { navController.navigate(Routes.Register.route) }
-    ) {
-        Text("Crear cuenta")
     }
 }
