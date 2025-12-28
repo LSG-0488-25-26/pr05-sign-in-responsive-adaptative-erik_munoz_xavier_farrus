@@ -56,7 +56,6 @@ private fun LoginCompact(
         LoginForm(navController, vm)
     }
 }
-
 @Composable
 private fun LoginMedium(
     navController: NavController,
@@ -132,7 +131,6 @@ private fun LoginMedium(
         }
     }
 }
-
 @Composable
 private fun LoginExpanded(
     navController: NavController,
@@ -142,7 +140,7 @@ private fun LoginExpanded(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp) // similar al medium
+            .padding(24.dp)
     ) {
 
         AppBanner(
@@ -210,8 +208,6 @@ private fun LoginExpanded(
         }
     }
 }
-
-
 @Composable
 private fun LoginForm(
     navController: NavController,

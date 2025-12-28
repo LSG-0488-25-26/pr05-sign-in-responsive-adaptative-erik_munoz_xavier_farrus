@@ -41,8 +41,6 @@ fun RegisterScreen(
             RegisterExpanded(navController, vm, widthSizeClass)
     }
 }
-
-
 @Composable
 private fun RegisterCompact(
     navController: NavController,
@@ -128,8 +126,6 @@ private fun RegisterMedium(
         }
     }
 }
-
-
 @Composable
 private fun RegisterExpanded(
     navController: NavController,
@@ -144,7 +140,6 @@ private fun RegisterExpanded(
         Column(
             modifier = Modifier
                 .weight(0.8f)
-                .fillMaxHeight()
         ) {
             AppBanner(
                 widthSizeClass = widthSizeClass,
@@ -154,7 +149,9 @@ private fun RegisterExpanded(
 
             Spacer(Modifier.height(12.dp))
 
-            Card {
+            Card(
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Column(Modifier.padding(16.dp)) {
                     Text("Bienvenido/a", style = MaterialTheme.typography.titleMedium)
                     Spacer(Modifier.height(8.dp))
@@ -168,13 +165,11 @@ private fun RegisterExpanded(
         Column(
             modifier = Modifier
                 .weight(1.2f)
-                .fillMaxHeight()
-                .verticalScroll(rememberScrollState())
         ) {
             RegisterForm(
                 navController = navController,
                 vm = vm,
-                formWidthFraction = 0.85f,
+                formWidthFraction = 1f,
                 showSideHelp = true
             )
         }
@@ -184,7 +179,6 @@ private fun RegisterExpanded(
         Column(
             modifier = Modifier
                 .weight(0.8f)
-                .fillMaxHeight()
         ) {
             Card {
                 Column(Modifier.padding(16.dp)) {
@@ -201,8 +195,6 @@ private fun RegisterExpanded(
         }
     }
 }
-
-
 @Composable
 private fun RegisterForm(
     navController: NavController,
@@ -330,12 +322,6 @@ private fun RegisterForm(
                 onClick = {},
                 label = { Text("Tip: usuario debe ser único") }
             )
-        }
-
-        TextButton(
-            onClick = { navController.navigate(Routes.Login.route) }
-        ) {
-            Text("Ir al Login")
         }
     }
 }
