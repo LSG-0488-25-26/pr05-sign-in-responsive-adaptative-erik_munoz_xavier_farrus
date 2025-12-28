@@ -172,11 +172,20 @@ Rutas disponibles:
 
 ## 📸 Capturas
 
-📌 **(Añadir aquí capturas de la app mostrando):**
-
-* Registro en Compact / Medium / Expanded
-* Login en distintas orientaciones
-* Cambio portrait / landscape
+<img width="1017" height="638" alt="image" src="https://github.com/user-attachments/assets/4c60936a-05d0-41c2-ac12-5d2b68a51379" />
+<img width="1013" height="630" alt="image" src="https://github.com/user-attachments/assets/8e8dea53-583c-45c2-b55c-64c9016da8d7" />
+<img width="1011" height="633" alt="image" src="https://github.com/user-attachments/assets/88379884-c479-4a14-93c6-7894363cba69" />
+<img width="998" height="624" alt="image" src="https://github.com/user-attachments/assets/73e63957-2c11-4711-aa40-2c975760831e" />
+<img width="1016" height="632" alt="image" src="https://github.com/user-attachments/assets/f1654a3a-0c46-4e39-b8bf-aa8bb9f02195" />
+<img width="1026" height="637" alt="image" src="https://github.com/user-attachments/assets/89816e3a-0e36-4ddd-90bd-b569de665910" />
+<img width="283" height="638" alt="image" src="https://github.com/user-attachments/assets/38045f40-f39b-4f10-a0f0-4475e596ee9f" />
+<img width="285" height="639" alt="image" src="https://github.com/user-attachments/assets/74f3b616-3c33-4dd3-85cc-d8201d2a1be1" />
+<img width="288" height="645" alt="image" src="https://github.com/user-attachments/assets/6552c706-2be5-4a7d-a2a1-9b2cf84501e1" />
+<img width="1259" height="555" alt="image" src="https://github.com/user-attachments/assets/4d770452-e361-4fa3-ac70-62f368c4fdc3" />
+<img width="1260" height="551" alt="image" src="https://github.com/user-attachments/assets/35996f06-b8cb-40e8-af43-5ad371574ee3" />
+<img width="1261" height="563" alt="image" src="https://github.com/user-attachments/assets/a2a6c6fc-b34c-487b-a3c4-4d15aad95055" />
+<img width="940" height="413" alt="image" src="https://github.com/user-attachments/assets/893c589f-3d28-44a6-be7a-6952bdd82a21" />
+<img width="925" height="419" alt="image" src="https://github.com/user-attachments/assets/1efdb96f-efb5-473c-aa15-81498b29dac0" />
 
 ---
 
