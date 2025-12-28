@@ -16,6 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.responsiveadaptive.Routes
 import com.example.responsiveadaptive.viewmodel.AuthViewModel
+import android.widget.Toast
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun LoginScreen(
@@ -137,9 +140,12 @@ private fun LoginExpanded(
     vm: AuthViewModel,
     windowSize: WindowSizeClass
 ) {
+    val scrollState = rememberScrollState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(scrollState)
             .padding(24.dp)
     ) {
 
@@ -193,8 +199,8 @@ private fun LoginExpanded(
 
         Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
+                .fillMaxWidth(),
+
             contentAlignment = Alignment.TopCenter
         ) {
             Card(
@@ -213,9 +219,19 @@ private fun LoginForm(
     navController: NavController,
     vm: AuthViewModel
 ) {
+    val context = LocalContext.current
     val user by vm.loginUsername.observeAsState("")
     val pass by vm.loginPassword.observeAsState("")
     val error by vm.loginError.observeAsState()
+    val loginSuccess by vm.loginSuccess.observeAsState()
+
+    LaunchedEffect(loginSuccess) {
+        if (loginSuccess == true) {
+            Toast.makeText(context, "Inicio de sesión correcto", Toast.LENGTH_SHORT).show()
+        } else if (loginSuccess == false) {
+            Toast.makeText(context, "Login fallido: credenciales incorrectas", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     Text(
         text = "Login",

@@ -136,6 +136,7 @@ private fun RegisterExpanded(
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp)
+            .verticalScroll(rememberScrollState())
     ) {
         Column(
             modifier = Modifier

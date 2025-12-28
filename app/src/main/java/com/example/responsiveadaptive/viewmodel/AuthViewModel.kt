@@ -198,10 +198,16 @@ class AuthViewModel : ViewModel() {
 
         return if (user == null) {
             _loginError.value = "Credenciales incorrectas"
+            _loginSuccess.value = false
             false
         } else {
             _loginError.value = null
+            _loginSuccess.value = true
             true
         }
     }
+
+    private val _loginSuccess = MutableLiveData<Boolean?>(null)
+    val loginSuccess: LiveData<Boolean?> = _loginSuccess
+
 }
